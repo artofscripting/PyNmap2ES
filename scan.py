@@ -6,11 +6,9 @@ import json
 import xmltodict    
 import os
 import uuid
-
 import sys, os.path
 sys.path.append(os.path.abspath('../esconfig'))
 from esconfig import *
-
 
 class esLog:
     indexName = str()
@@ -24,12 +22,9 @@ class esLog:
         self.type_of_doc = type_of_doc
         self.js = js
 
-
 def sendToES(esllog):
     es.index(index=esllog.indexName, doc_type=esllog.type_of_doc,
              id=esllog.i_d, body=json.loads(esllog.js))
-
-
 
 es  = Elasticsearch([{'host': es_host, 'port': 9200}])
 def checkhosts(namespace):
@@ -140,15 +135,6 @@ def checkhosts(namespace):
         except:
             donothing = ""
 
-    
-
-
-
-
-
 
 for namespace in namespaces:
-    checkhosts(namespace)    
-
-    
-    
+    checkhosts(namespace)  
